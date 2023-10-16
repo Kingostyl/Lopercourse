@@ -1,0 +1,33 @@
+[
+    {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/a/a8/NestJS.svg",
+        "alt": "",
+        "className": "w-20 pt-10 pb-5"
+    },
+    {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+        "alt": "",
+        "className": "w-20 pt-10 pb-5"
+    },
+    {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg",
+        "alt": "",
+        "className": "w-20 pt-10 pb-5"
+    },
+    {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/9/91/Dart-logo-icon.svg",
+        "alt": "",
+        "className": "w-20 pt-10 pb-5"
+    },
+    {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+        "alt": "",
+        "className": "w-20 pt-10 pb-5"
+    },
+
+    {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+        "alt": "",
+        "className": "w-20 pt-10 pb-5"
+    }
+]
