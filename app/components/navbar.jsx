@@ -4,9 +4,21 @@ import Logo from "../../public/icon.png";
 import Image from "next/image";
 import { useScroll } from "../../hook/useScroll";
 import Link from "next/link";
+import useProfile from "@/hook/useProfile";
+import useUser from "@/hook/useUsername";
+import { useEffect, useState } from "react";
 
 const Nav = () => {
   const { scrollDirection } = useScroll();
+  const { selectedImage } = useProfile();
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('email');
+    if (storedEmail) {
+      setEmail(storedEmail);
+    }
+  }, []);
 
   const styles = {
     active: {
@@ -30,15 +42,15 @@ const Nav = () => {
         aria-label="Global"
       >
         <div className="flex items-center justify-between">
-          <a
+          <Link
             className="flex items-center w-full gap-3 text-xl font-semibold "
-            href="#"
+            href="/Home"
           >
             <picture>
               <Image src={Logo} alt="" className="w-10 md:w-[5rem]" />
             </picture>
             LoperCourse
-          </a>
+          </Link>
           <div className="sm:hidden">
             <button
               type="button"
@@ -159,10 +171,9 @@ const Nav = () => {
               >
                 <img
                   className=" w-10 rounded-full object-cover h-10 ring-2 ring-white "
-                  src="https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbnxlbnwwfDB8MHx8fDI%3D&auto=format&fit=crop&w=1600&q=60"
+                  src={selectedImage}
                   alt="Image Description"
                 />
-                <span className="absolute bottom-2 right-0 block h-3 w-3 rounded-full ring-2 ring-white bg-green-500" />
               </div>
               <div
                 className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 mt-2 "
@@ -171,7 +182,7 @@ const Nav = () => {
                 <div className="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg ">
                   <p className="text-sm text-gray-500 ">Signed in as</p>
                   <p className="text-sm font-medium text-gray-800 ">
-                    LceDsard@gmail.com
+                    {email}
                   </p>
                 </div>
                 <div className="mt-2 py-2 first:pt-0 last:pb-0">

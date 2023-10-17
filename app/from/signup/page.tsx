@@ -1,52 +1,21 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
+import useSignup from "@/hook/useSignup";
 
 const Signup = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [userError, setUserError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-
-  const handleSignup = (e) => {
-    e.preventDefault();
-
-    if (username.trim() === "") {
-      setUserError("Username nya isi dulu");
-    } else {
-      setUserError("");
-      localStorage.setItem("username", username);
-    }
-    if (!validateEmail(email)) {
-      setEmailError("Alamat email tidak valid.");
-    } else {
-      setEmailError("");
-      localStorage.setItem("email", email);
-    }
-    if (password.trim() === "") {
-      setPasswordError("isi dulu Passwordnya");
-    } else {
-      setPasswordError("");
-      localStorage.setItem("password", password);
-    }
-
-    if (
-      username.trim() === "" ||
-      email.trim() === "" ||
-      password.trim() === ""
-    ) {
-      return;
-    } else {
-      window.location.href = "/from/login";
-    }
-  };
-
-  const validateEmail = (email) => {
-    return email.includes("@") && email.includes(".");
-  };
+  const {
+    handleSignup,
+    username,
+    email,
+    password,
+    setUsername,
+    setEmail,
+    setPassword,
+    userError,
+    emailError,
+    passwordError,
+  } = useSignup();
 
   return (
     <>
