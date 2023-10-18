@@ -12,7 +12,7 @@ interface LiProps {
 const Li: React.FC<LiProps & React.LiHTMLAttributes<HTMLLIElement>> = ({title, custom, herf}) => {
     return (
         <li className={clsx(``, {
-            "hover:underline font-semibold cursor-pointer": custom === "landing-li"
+            "hover:underline font-semibold text-sm cursor-pointer": custom === "landing-li"
         })}>
             <a href={herf}>{title}</a>
         </li>

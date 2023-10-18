@@ -16,9 +16,10 @@
 }
 
 .bgcolor {
-  height: 200px;
+  height: 150px;
   background: linear-gradient(
     rgba(255, 255, 255, 0) 0%,
     rgb(255, 255, 255) 100%
   );
 }
+

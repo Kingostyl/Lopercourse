@@ -10,7 +10,7 @@ interface imagedata {
 
 type xstatus = "bulet-user" | "landing-grid" | "landing-grid2" | "landing-grid3" | "googleimg";
 
-const Images: React.FC<imagedata> = ({ width, height, src, alt, status,  }) => {
+const Images: React.FC<imagedata> = ({ width, height, src, alt, status, ...props }) => {
   return (
     <>
       <picture >
@@ -24,9 +24,10 @@ const Images: React.FC<imagedata> = ({ width, height, src, alt, status,  }) => {
             "inline-block h-[46px] object-cover rounded-full ring-2 ring-white":
               status === "bulet-user",
               "h-auto object-cover rounded-t-xl": status === "landing-grid",
-              "h-[312px] w-full object-cover rounded-t-xl": status === "landing-grid2",
-              "h-[212px] w-full object-cover rounded-t-xl": status === "landing-grid3",
+              " rounded-3xl w-80 object-cover h-80": status === "googleimg",
+              // "h-[212px] w-full object-cover rounded-t-xl": status === "landing-grid3",
           })}
+          {...props}
         />
       </picture>
     </>
