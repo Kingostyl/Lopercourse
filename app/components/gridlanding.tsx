@@ -1,6 +1,6 @@
 const Grid = () => {
   return (
-    <div className="grid gap-32 -mx-72 md:-mx-32 grid-cols-2">
+    <div className="grid gap-32 -mx-72 justify-items-center md:-mx-32 grid-cols-2">
       <div className="flex gap-x-4">
         <div className="flex flex-col -mt-10 gap-7">
           <img

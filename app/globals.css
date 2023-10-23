@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+
 *,
 ::after,
 ::before {
@@ -10,6 +13,8 @@
   margin: 0;
   scroll-behavior: smooth;
 }
+
+
 
 .bgcustom {
   background-image: url("https://media.bizj.us/view/img/12262839/googles-new-campussvbj05162022050*xx3600-2025-0-188.jpg");

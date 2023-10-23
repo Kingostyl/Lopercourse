@@ -7,7 +7,15 @@ import LandingAPi from "@/api/landing.json";
 import Images from "./components/image";
 import Grid from "./components/gridlanding";
 import FooterLanding from "./components/footerlanding";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useSpring,
+  useMotionValue,
+  useTransform,
+  animate,
+} from "framer-motion";
 import useDisclosure from "@/hook/useDisclosure";
 const Landing = () => {
   const { disclosure, popup } = useDisclosure();
@@ -17,6 +25,15 @@ const Landing = () => {
     damping: 30,
     restDelta: 0.001,
   });
+
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, Math.round);
+
+  useEffect(() => {
+    const animation = animate(count, 100, { duration: 10 });
+
+    return animation.stop;
+  }, []);
 
   return (
     <>
@@ -52,9 +69,11 @@ const Landing = () => {
                   exit={{ opacity: 0, x: 20 }}
                   key="content"
                 >
-                  <div className="w-[50%] gap-1 h-[100px] mx-auto flex justify-center items-center text-center flex-col">
-                    <h1 className="text-6xl">Raih Mimpi Kalian</h1>
-                    <p className="text-4xl text-center">Bersama Kami</p>
+                  <div className="md:w-[50%] gap-1 h-[100px] mx-auto flex justify-center items-center text-center flex-col">
+                    <h1 className="text-4xl md:text-6xl">Raih Mimpi Kalian</h1>
+                    <p className="text-4xl text-center">
+                      Bersama Kami
+                    </p>
                   </div>
                 </motion.div>
               )}
@@ -66,17 +85,33 @@ const Landing = () => {
               onClick={popup}
               className=" animate-bounce duration-1000 flex justify-center items-center  bg-white border border-dark rounded-full w-[50px] z-40 h-[50px]"
             >
-              {disclosure ? (
-                <p className="font-bold text-2xl pb-1">x</p>
-              ) : (
-                <p className="font-bold text-2xl">i</p>
-              )}
+              <AnimatePresence>
+                {disclosure ? (
+                  <motion.div
+                    initial={{ opacity: 1, x: 0 }}
+                    animate={{ opacity: 10, x: 0, rotate: 180 }}
+                    exit={{ opacity: 0, x: 0, rotateX: 20 }}
+                    key="content"
+                  >
+                    <p className="font-bold text-2xl pb-1">x</p>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 10, rotate: 0 }}
+                    exit={{ opacity: 0, rotateX: 180 }}
+                    key="content"
+                  >
+                    <p className="font-bold text-2xl">i</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </button>
           </div>
           <div className="bgcolor z-30 absolute bottom-0 left-0 right-0"></div>
         </section>
 
-        <section className="h-screen z-20   flex flex-col md:flex-row md:flex justify-around w-full items-center relative top-0 ">
+        <section className="h-screen z-20   flex flex-col md:flex-row md:flex justify-around mx-auto max-w-7xl items-center relative top-0 ">
           <picture className="grid grid-cols-3 relative md:grid-cols-3 items-center gap-4">
             {LandingAPi.map((i, index) => (
               <img
@@ -98,18 +133,16 @@ const Landing = () => {
             <Button title="Sign Up" custom="signup" />
           </div>
         </section>
-        <section className=" h-screen  flex md:flex-row md:gap-0  gap-10 flex-col-reverse relative items-center text-dark">
-          <div className="flex flex-col items-center gap-3 mb-20 md:mb-0">
-            <h1 className="font-semibold text-3xl">
-              Google With Us
-            </h1>
-            <p className="font-medium text-center w-[80%] text-lg">
+        <section className="flex px-4 md:px-0 md:flex-row my-10 md:my-0 flex-col-reverse  items-center  mx-auto h-screen max-w-7xl text-dark">
+          <div className="grid items-center gap-4">
+            <h1 className="font-semibold text-3xl">Google With Us</h1>
+            <p className="font-medium w-[80%] text-lg">
               Google sudah berkontribusi dengan kami agar mepermudahkan penguna
               lopercourse untuk menuju google developer
             </p>
             <Button title="Login" custom="login" />
           </div>
-          <span className="flex gap-5 mr-5">
+          <span className="flex gap-5 md:pb-0 pb-16">
             <aside className=" translate-y-8">
               <Images
                 status="googleimg"
